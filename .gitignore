@@ -1,0 +1,5 @@
+*.sw[o|p]
+bower_components/
+bower.json
+foo/
+jasmine/
