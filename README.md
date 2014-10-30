@@ -33,11 +33,11 @@ Usage(사용법)
     <script src="unitypi.js"></script>
     <script>
       	$(function(){
-          	$('.foo').typed({
-    		    string: '두유 노우 김연아?',
+            $('.foo').unitypi({
+                string: '두유 노우 김연아?',
                 typingSpeed: 100, // 100타/분
-                delay: 50 // 50ms
-          	});
+                startDelay: 1000 // 1000ms
+            });
       	});
     </script>
 </body>

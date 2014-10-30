@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="UTF-8">
-		<title>UNITYPI</title>
-	</head>
-	<body>
-		<h1 class="text"></h1>
-		<h2 class="text"></h2>
-		<h3 class="text"></h3>
-		<h4 class="text"></h4>
-		<h5 class="text"></h5>
-		<h6 class="text"></h6>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script src="js/unitypi.js"></script>
-		<script>
-			$(function() {
-				$('.text').unitypi();	
-			});
-		</script>
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Unitypi | 한글 타이핑 효과</title>
+    </head>
+    <body>
+        <h1 class="foo"></h1>
+        <h2 class="foo"></h2>
+        <h3 class="foo"></h3>
+        <h4 class="foo"></h4>
+        <h5 class="foo"></h5>
+        <h6 class="foo"></h6>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/unitypi.js"></script>
+        <script>
+            $(function() {
+                $('.foo').unitypi({
+                    string: '두유 노우 김연아?',
+                    typingSpeed: 100, // 100타/분
+                    startDelay: 1000 // 1000ms
+                });
+            });
+        </script>
+    </body>
 </html>
