@@ -36,12 +36,27 @@ Usage(사용법)
             $('.foo').unitypi({
                 string: '두유 노우 김연아?',
                 typingSpeed: 100, // 100타/분
-                startDelay: 1000 // 1000ms
+                startDelay: 1000 // ms
+                backSpeed: 100, // ms
+                backDelay: 1000 // ms
             });
       	});
     </script>
 </body>
 ~~~
+
+### backspace 해제
+출력된 문장을 지우지 않고 그대로 유지하고 싶으면, `backSpeed: false`로 설정.
+~~~ javascript
+$('.foo').unitypi({
+    string: '문장을 그대로 유지하고 싶나요?',
+    typingSpeed: 100, // 100타/분
+    startDelay: 1000 // 1000ms
+    backSpeed: false // backspace 해제
+});
+~~~
+
+
 
 Note(비고)
 ----

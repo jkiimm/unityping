@@ -44,7 +44,15 @@
             })();
 
             setTimeout(function() {
-                if(that.pos.str === sq.length) return;
+                if(that.pos.str === sq.length) {
+                    if(typeof that.options.backSpeed === 'boolean' && that.options.backSpeed === false) {
+                        return;
+                    }
+                    setTimeout(function() {
+                        that.backspace(sq);
+                    }, that.options.backDelay);
+                    return;
+                }
 
                 that.written = !that.pos.ch ? that.written+sq[that.pos.str][that.pos.ch] : that.written.substr(0, that.written.length-1)+sq[that.pos.str][that.pos.ch];
                 that.jq.text(that.written);
@@ -57,6 +65,18 @@
                 }
                 that.typing(sq);
             }, duration);
+        },
+        backspace: function(sq) {
+            var that = this; 
+
+            setTimeout(function() {
+                if(!that.pos.str) { return; }
+                that.written = that.written.substr(0, that.written.length-1);
+                that.jq.text(that.written);
+                that.pos.str--;
+
+                that.backspace(sq);
+            }, that.options.backSpeed);
         },
         run: function() {
             this.init(); 
@@ -118,5 +138,7 @@
         string: '이걸본다면 누군가는 이걸 쓰고있다는거군',
         typingSpeed: 200,
         startDelay: 0,
+        backDelay: 1000,
+        backSpeed: 100,
     };
 })(window.jQuery);
