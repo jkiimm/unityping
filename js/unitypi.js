@@ -1,3 +1,26 @@
+// The MIT License (MIT)
+// 
+// Copyright (c) 2014 ligeek
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+
 (function($) {
     'use strict';
 
@@ -11,8 +34,10 @@
         this.pos = {
             str: 0,
             ch: 0,
+            sentence: 0,
         };
         this.written = this.jq.text();
+        this.sq = [];
 
         this.run();
     };
@@ -21,17 +46,19 @@
         construction: Unitypi,
         init: function() {
             var that = this;
-            var sq = that.sequencer(that.options.string);
-            sq.tplen = (function() {
-                var len = 0;
-                for(var i=0; i<sq.length; i++) {
-                    len += sq[i].length;
-                }
-                return len;
-            })();
+            for(var i=0, len=that.options.string.length; i<len; i++) {
+                that.sq.push(that.sequencer(that.options.string[i]));
+                that.sq[i].tplen = (function() {
+                    var length = 0;
+                    for(var j=0; j<that.sq[i].length; j++) {
+                        length += that.sq[i][j].length;
+                    }
+                    return length;
+                })();
+            }
 
             setTimeout(function() {
-                that.typing(sq);
+                that.typing(that.sq[that.pos.sentence]);
             }, this.options.startDelay);
         },
         typing: function(sq) {
@@ -45,9 +72,7 @@
 
             setTimeout(function() {
                 if(that.pos.str === sq.length) {
-                    if(typeof that.options.backSpeed === 'boolean' && that.options.backSpeed === false) {
-                        return;
-                    }
+                    if((that.pos.sentence === that.options.string.length-1) { return; }
                     setTimeout(function() {
                         that.backspace(sq);
                     }, that.options.backDelay);
@@ -68,9 +93,18 @@
         },
         backspace: function(sq) {
             var that = this; 
+            var strlen = that.options.string.length;
 
             setTimeout(function() {
-                if(!that.pos.str) { return; }
+                if(!that.pos.str) {
+                    if(that.pos.sentence !== strlen-1) {
+                        that.pos.sentence++;
+                        setTimeout(function() {
+                            that.typing(that.sq[that.pos.sentence]);
+                        }, that.options.startDelay);
+                    } else { return; }
+                    return;
+                }
                 that.written = that.written.substr(0, that.written.length-1);
                 that.jq.text(that.written);
                 that.pos.str--;
@@ -135,7 +169,7 @@
     };
 
     $.fn.unitypi.defaults = {
-        string: '이걸본다면 누군가는 이걸 쓰고있다는거군',
+        string: ['반가워요, 프로그래머!', '원하시는 문장을 쓰시면,', '이렇게 타이핑이 됩니다!'],
         typingSpeed: 200,
         startDelay: 0,
         backDelay: 1000,

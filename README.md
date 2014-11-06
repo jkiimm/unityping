@@ -1,6 +1,6 @@
 Unitypi
 =========
-Hangul Typing effect plugin(한글 타이핑 효과!).
+jQuery - Hangul Typing effect plugin(한글 타이핑 효과!).
 
 Introduction(소개)
 ----
@@ -19,7 +19,7 @@ $ git clone https://github.com/ligeek/unitypi.git
 
 ### bower를 이용한 방법
 ~~~ sh 
-$ bower install -S unitypi
+$ bower install --save unitypi
 ~~~
 
 Usage(사용법)
@@ -34,8 +34,8 @@ Usage(사용법)
     <script>
       	$(function(){
             $('.foo').unitypi({
-                string: '두유 노우 김연아?',
-                typingSpeed: 100, // 100타/분
+                string: ['두유 노우 김연아?', '두유 노우 강남스타일?', '두유 노우 지성팍?'],
+                typingSpeed: 300, // 300타/분
                 startDelay: 1000 // ms
                 backSpeed: 100, // ms
                 backDelay: 1000 // ms
@@ -44,19 +44,6 @@ Usage(사용법)
     </script>
 </body>
 ~~~
-
-### backspace 해제
-출력된 문장을 지우지 않고 그대로 유지하고 싶으면, `backSpeed: false`로 설정.
-~~~ javascript
-$('.foo').unitypi({
-    string: '문장을 그대로 유지하고 싶나요?',
-    typingSpeed: 100, // 100타/분
-    startDelay: 1000 // 1000ms
-    backSpeed: false // backspace 해제
-});
-~~~
-
-
 
 Note(비고)
 ----
