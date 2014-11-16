@@ -67,20 +67,24 @@
             var duration = (function() {
                 var variation = 50;
                 var randomSpeed = (Math.random()*variation - variation*0.5) + that.options.typingSpeed;
-                return sq.tplen*300/randomSpeed;
+                return sq.tplen*600/randomSpeed;
             })();
 
             setTimeout(function() {
                 if(that.pos.str === sq.length) {
-                    if((that.pos.sentence === that.options.string.length-1) { return; }
+                    if(that.pos.sentence === that.options.string.length-1) { return; }
                     setTimeout(function() {
                         that.backspace(sq);
                     }, that.options.backDelay);
+
+                    that.options.onComplete();
                     return;
                 }
 
                 that.written = !that.pos.ch ? that.written+sq[that.pos.str][that.pos.ch] : that.written.substr(0, that.written.length-1)+sq[that.pos.str][that.pos.ch];
                 that.jq.text(that.written);
+                // eachTyping callback
+                that.options.eachTyping(that.written, that.pos);
 
                 if(that.pos.ch !== sq[that.pos.str].length-1) {
                     that.pos.ch++;	
@@ -102,11 +106,16 @@
                         setTimeout(function() {
                             that.typing(that.sq[that.pos.sentence]);
                         }, that.options.startDelay);
-                    } else { return; }
+                    }
+
+                    that.options.onComplete();
                     return;
                 }
                 that.written = that.written.substr(0, that.written.length-1);
                 that.jq.text(that.written);
+                // eachBack callback
+                that.options.eachBack(that.written, that.pos.sentence);
+
                 that.pos.str--;
 
                 that.backspace(sq);
@@ -174,5 +183,8 @@
         startDelay: 0,
         backDelay: 1000,
         backSpeed: 100,
+        eachTyping: function() {},
+        eachBack: function() {},
+        onComplete: function() {},
     };
 })(window.jQuery);

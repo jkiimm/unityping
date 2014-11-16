@@ -6,11 +6,13 @@
     </head>
     <body>
         <h1 class="foo"></h1>
+        <!--
         <h2 class="foo"></h2>
         <h3 class="foo"></h3>
         <h4 class="foo"></h4>
         <h5 class="foo"></h5>
         <h6 class="foo"></h6>
+        -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="js/unitypi.js"></script>
         <script>
@@ -20,7 +22,16 @@
                     typingSpeed: 300, // 타/분
                     startDelay: 1000,// ms
                     backSpeed: 100, // ms
-                    backDelay: 1000 // ms
+                    backDelay: 1000, // ms
+                    eachTyping: function(str, pos) {
+                        console.log('EVENT [eachTyping]', str, pos.sentence, pos.str, pos.ch); 
+                    },
+                    eachBack: function(str, sentenceIndex) {
+                        console.log('EVENT [eachBack]', str, sentenceIndex); 
+                    },
+                    onComplete: function() {
+                        console.log('EVENT [onComplete]');
+                    },
                 });
             });
         </script>
