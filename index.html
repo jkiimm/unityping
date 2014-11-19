@@ -8,18 +8,23 @@
     <body>
         <div class="wrapper">
             <span class="foo"></span>
-            <span id="typed-cursor" class="blinking">|</span>
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="js/unitypi.js"></script>
         <script>
             $(function() {
                 $('.foo').unitypi({
-                    string: ['두유 노우 김연아?', '두유 노우 강남스타일?', '두유 노우 지성팍?'],
-                    typingSpeed: 100, // 타/분
+                    string: [
+                        'Abracadabra',
+                        '두유 노우 김연아?',
+                        '두유 노우 강남스타일?',
+                        '두유 노우 위송빠레?'
+                    ],
+                    typingSpeed: 300, // 타/분
                     startDelay: 1000,// ms
                     backSpeed: 100, // ms
                     backDelay: 1000, // ms
+                    cursor: '|',
                     eachTyping: function(str, pos) {
                         console.log('EVENT [eachTyping]', str, pos.sentence, pos.str, pos.ch); 
                     },

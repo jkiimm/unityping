@@ -122,7 +122,17 @@
             }, that.options.backSpeed);
         },
         run: function() {
+            this.addCursor(this.options.cursor); 
             this.init(); 
+        },
+        addCursor: function(_symbol) {
+            var symbol = _symbol;
+            this.jq.after('<span id="blinker">'+symbol+'</span>');
+            $('#blinker').css({
+                'font-weight': 100,
+                'font-size': parseInt(this.jq.css('font-size'))*1.14+'px'
+            });
+        
         },
         sequencer: function(str) {
             var that = this;
@@ -186,5 +196,6 @@
         eachTyping: function() {},
         eachBack: function() {},
         onComplete: function() {},
+        cursor: '|',
     };
 })(window.jQuery);
