@@ -45,6 +45,28 @@ Usage(사용법)
 </body>
 ~~~
 
+### 커서 애니메이션을 넣는 방법
+아래의 CSS코드를 복사해서 붙어넣으세요.
+~~~ css
+#blinker{
+    -webkit-animation: blink 1.2s step-end infinite;
+    -moz-animation: blink 1.2s step-end infinite;
+    animation: blink 1.2s step-end infinite;
+}
+@keyframes blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}
+@-webkit-keyframes blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}
+@-moz-keyframes blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}
+~~~
+
 Note(비고)
 ----
 현재는 아주 기본적인 기능만 담고 있으므로, 정말 간단한 곳에만 활용하시는 것이 정신건강에 이롭습니다. 사용해보시고 건의하실 사항*(이 기능이 없는게 말이되??)*이나 버그로 인한 스트레스를 받고 있다면 언제든지 [issue](https://github.com/ligeek/unitypi/issues)에 올려주세요!
