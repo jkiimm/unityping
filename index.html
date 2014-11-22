@@ -15,25 +15,12 @@
             $(function() {
                 $('.foo').unitypi({
                     string: [
-                        'Abracadabra',
+                        //'Abracadabra',
                         '두유 노우 김연아?',
                         '두유 노우 강남스타일?',
                         '두유 노우 위송빠레?'
                     ],
-                    typingSpeed: 300, // 타/분
-                    startDelay: 1000,// ms
-                    backSpeed: 100, // ms
-                    backDelay: 1000, // ms
-                    cursor: '|',
-                    eachTyping: function(str, pos) {
-                        console.log('EVENT [eachTyping]', str, pos.sentence, pos.str, pos.ch); 
-                    },
-                    eachBack: function(str, sentenceIndex) {
-                        console.log('EVENT [eachBack]', str, sentenceIndex); 
-                    },
-                    onComplete: function() {
-                        console.log('EVENT [onComplete]');
-                    },
+                    typingSpeed: 150, // 타/분 (단위: CPM)
                 });
             });
         </script>

@@ -193,9 +193,9 @@
         startDelay: 0,
         backDelay: 1000,
         backSpeed: 100,
+        cursor: '|',
         eachTyping: function() {},
         eachBack: function() {},
         onComplete: function() {},
-        cursor: '|',
     };
 })(window.jQuery);
