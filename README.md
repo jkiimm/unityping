@@ -36,7 +36,7 @@ Usage(사용법)
             $('.foo').unitypi({
                 string: ['두유 노우 김연아?', '두유 노우 강남스타일?', '두유 노우 지성팍?'],
                 typingSpeed: 300, // 300타/분
-                startDelay: 1000 // ms
+                startDelay: 1000, // ms
                 backSpeed: 100, // ms
                 backDelay: 1000 // ms
             });
@@ -66,6 +66,10 @@ Usage(사용법)
     50% { opacity: 1; }
 }
 ~~~
+
+### 좀 더 자세한 사용법들
+[Wiki를 참조하세요!](https://github.com/ligeek/unitypi/wiki)
+
 
 Note(비고)
 ----
