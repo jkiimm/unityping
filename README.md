@@ -1,6 +1,7 @@
 Unitypi
 =========
-jQuery - Hangul Typing effect plugin(한글 타이핑 플러그인!).
+jQuery - Hangul Typing effect plugin(한글 타이핑 플러그인!).  
+![typing GIF](http://s1.postimg.org/f48r55qzz/typing.gif)
 
 Introduction(소개)
 ----
