@@ -20,7 +20,7 @@ $ git clone https://github.com/ligeek/unityping.git
 
 ### bower를 이용한 방법
 ~~~ sh 
-$ bower install --save unityping
+$ bower install --save https://github.com/ligeek/unityping.git
 ~~~
 
 Usage(사용법)
