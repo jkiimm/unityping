@@ -1,21 +1,23 @@
 body {
     margin: 0;
     font-size: 100%;
+    background: #222222;
 }
 
 .wrapper {
     margin-top: 300px;
     text-align: center;
 }
+
+.foo, #blinker {
+    color: #ffffff;
+}
+
 .foo {
     font-weight: 700;
     font-size: 4em;
 }
 
-.bar {
-    background-color: steelblue;
-    color: white;
-}
 
 #blinker{
     -webkit-animation: blink 1.2s step-end infinite;
