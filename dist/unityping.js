@@ -1,6 +1,5 @@
 // The MIT License (MIT)
-// 
-// Copyright (c) 2014 ligeek
+// // Copyright (c) 2014 ligeek
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -49,14 +48,15 @@
             for(var i=0, len=that.options.string.length; i<len; i++) {
                 that.sq.push(that.sequencer(that.options.string[i]));
                 that.sq[i].tplen = (function() {
-                    var length = 0;
+                    var len = 0;
                     for(var j=0; j<that.sq[i].length; j++) {
-                        length += that.sq[i][j].length;
+                        len += that.sq[i][j].length;
                     }
-                    return length;
+                    return len;
                 })();
             }
 
+            console.log(that.sq);
             setTimeout(function() {
                 that.typing(that.sq[that.pos.sentence]);
             }, this.options.startDelay);
@@ -67,7 +67,7 @@
             var duration = (function() {
                 var variation = 50;
                 var randomSpeed = (Math.random()*variation - variation*0.5) + that.options.typingSpeed;
-                return sq.tplen*600/randomSpeed;
+                return (60*1000)/randomSpeed;
             })();
 
             setTimeout(function() {
@@ -125,8 +125,7 @@
             this.addCursor(this.options.cursor); 
             this.init(); 
         },
-        addCursor: function(_symbol) {
-            var symbol = _symbol;
+        addCursor: function(symbol) {
             this.jq.after('<span id="blinker">'+symbol+'</span>');
             $('#blinker').css({
                 'font-weight': 100,
