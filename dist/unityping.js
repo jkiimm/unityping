@@ -30,6 +30,29 @@
             han: 0xAC00,
             cho: 0x1100,
         };
+        this.jamo = {
+            cho: [
+                'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ',
+                'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ',
+                'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ',
+                'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
+            ],
+            jung: [
+                'ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ',
+                'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ',
+                'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ',
+                'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ',
+                'ㅣ' 
+            ],
+            jong: [
+                '', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ',
+                'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ',
+                'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ',
+                'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ',
+                'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ',
+                'ㅌ', 'ㅍ', 'ㅎ' 
+            ]
+        };
         this.pos = {
             str: 0,
             ch: 0,
@@ -56,7 +79,6 @@
                 })();
             }
 
-            console.log(that.sq);
             setTimeout(function() {
                 that.typing(that.sq[that.pos.sentence]);
             }, this.options.startDelay);
@@ -137,11 +159,38 @@
             var that = this;
             var combiner = function(c) {
                 var arr = [];
-                arr.push(String.fromCharCode(that.beginCode.cho+c.cho()));
-                arr.push(String.fromCharCode(that.beginCode.han+((c.cho()*21)+c.jung())*28));
+                var transHanChar = function(cho, jung, jong) {
+                    jong = jong || 0;
+                    if((typeof jung === 'undefined') && !jong) {
+                        return String.fromCharCode(that.beginCode.cho+cho);
+                    }
+                    return String.fromCharCode(that.beginCode.han+((cho*21)+jung)*28+jong);
+                };
+                var jamo = that.jamo;
 
-                if(c.jong()) {
-                    arr.push(String.fromCharCode(that.beginCode.han+((c.cho()*21)+c.jung())*28+c.jong()));
+                arr.push(transHanChar(c.cho));
+
+                if(c.jung > jamo.jung.indexOf('ㅗ') && c.jung < jamo.jung.indexOf('ㅛ')) {
+                    arr.push(transHanChar(c.cho, jamo.jung.indexOf('ㅗ')));
+                } else if(c.jung > jamo.jung.indexOf('ㅜ') && c.jung < jamo.jung.indexOf('ㅠ')) {
+                    arr.push(transHanChar(c.cho, jamo.jung.indexOf('ㅜ')));
+                } else if(c.jung > jamo.jung.indexOf('ㅡ') && c.jung < jamo.jung.indexOf('ㅣ')) {
+                    arr.push(transHanChar(c.cho, jamo.jung.indexOf('ㅡ')));
+                }
+                arr.push(transHanChar(c.cho, c.jung));
+
+
+                if(c.jong) {
+                    if(c.jong > jamo.jong.indexOf('ㄲ') && c.jong < jamo.jong.indexOf('ㄴ')) {
+                        arr.push(transHanChar(c.cho, c.jung, jamo.jong.indexOf('ㄱ')));
+                    } else if(c.jong > jamo.jong.indexOf('ㄴ') && c.jong < jamo.jong.indexOf('ㄷ')) {
+                        arr.push(transHanChar(c.cho, c.jung, jamo.jong.indexOf('ㄴ')));
+                    } else if(c.jong > jamo.jong.indexOf('ㄹ') && c.jong < jamo.jong.indexOf('ㅁ')) {
+                        arr.push(transHanChar(c.cho, c.jung, jamo.jong.indexOf('ㄹ')));
+                    } else if(c.jong > jamo.jong.indexOf('ㅂ') && c.jong < jamo.jong.indexOf('ㅅ')) {
+                        arr.push(transHanChar(c.cho, c.jung, jamo.jong.indexOf('ㅂ')));
+                    }
+                    arr.push(transHanChar(c.cho, c.jung, c.jong));
                 }
 
                 return arr;
@@ -154,17 +203,11 @@
 
                 // Hangul
                 var remainder = uni.charCodeAt(0) - that.beginCode.han,
-                hanCode = {
-                    jong: function() {
-                        return remainder % 28;
-                    },
-                    jung: function() {
-                        return ((remainder-this.jong())/28) % 21;
-                    },
-                    cho: function() {
-                        return (((remainder-this.jong())/28)-this.jung()) / 21;
-                    }
-                };
+                hanCode = {};
+                hanCode.jong = remainder % 28;
+                hanCode.jung = ((remainder-hanCode.jong) / 28) % 21;
+                hanCode.cho = (((remainder-hanCode.jong)/28) - hanCode.jung) / 21;
+
 
                 return combiner(hanCode);
             };
@@ -187,7 +230,7 @@
     };
 
     $.fn.unityping.defaults = {
-        string: ['반가워요, 프로그래머!', '원하시는 문장을 쓰시면,', '이렇게 타이핑이 됩니다!'],
+        string: ['안녕하세요!', '원하시는 문장을 쓰시면,', '이렇게 타이핑이 됩니다!'],
         typingSpeed: 200,
         startDelay: 0,
         backDelay: 1000,
