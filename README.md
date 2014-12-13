@@ -1,4 +1,4 @@
-Unitypi
+Unityping
 =========
 jQuery - Hangul Typing effect plugin(한글 타이핑 플러그인!).  
 ![typing GIF](http://s1.postimg.org/f48r55qzz/typing.gif)
@@ -11,16 +11,16 @@ Introduction(소개)
 Install(설치)
 ----
 ### 일반적인 방법
-오른쪽에 있는 Download ZIP을 누르시거나, [여기에서!](https://github.com/ligeek/unitypi/archive/master.zip)
+오른쪽에 있는 Download ZIP을 누르시거나, [여기에서!](https://github.com/ligeek/unityping/archive/master.zip)
 
 ### git을 이용한 방법
 ~~~ sh
-$ git clone https://github.com/ligeek/unitypi.git
+$ git clone https://github.com/ligeek/unityping.git
 ~~~
 
 ### bower를 이용한 방법
 ~~~ sh 
-$ bower install --save unitypi
+$ bower install --save unityping
 ~~~
 
 Usage(사용법)
@@ -31,10 +31,10 @@ Usage(사용법)
     <span class="foo"></span>
     ...
     <script src="jquery.js"></script>
-    <script src="unitypi.js"></script>
+    <script src="unityping.js"></script>
     <script>
       	$(function(){
-            $('.foo').unitypi({
+            $('.foo').unityping({
                 string: ['두유 노우 김연아?', '두유 노우 강남스타일?', '두유 노우 지성팍?'],
                 typingSpeed: 300, // 300타/분
                 startDelay: 1000, // ms
@@ -69,10 +69,10 @@ Usage(사용법)
 ~~~
 
 ### 좀 더 자세한 사용법들
-[Wiki를 참조하세요!](https://github.com/ligeek/unitypi/wiki)
+[Wiki를 참조하세요!](https://github.com/ligeek/unityping/wiki)
 
 
 Note(비고)
 ----
-현재는 아주 기본적인 기능만 담고 있으므로, 정말 간단한 곳에만 활용하시는 것이 정신건강에 이롭습니다. 사용해보시고 건의하실 사항*(이 기능이 없는게 말이되??)*이나 버그로 인한 스트레스를 받고 있다면 언제든지 [issue](https://github.com/ligeek/unitypi/issues)에 올려주세요!
+현재는 아주 기본적인 기능만 담고 있으므로, 정말 간단한 곳에만 활용하시는 것이 정신건강에 이롭습니다. 사용해보시고 건의하실 사항*(이 기능이 없는게 말이되??)*이나 버그로 인한 스트레스를 받고 있다면 언제든지 [issue](https://github.com/ligeek/unityping/issues)에 올려주세요!
 

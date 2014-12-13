@@ -24,9 +24,9 @@
 (function($) {
     'use strict';
 
-    var Unitypi = function(selector, options) {
+    var Unityping = function(selector, options) {
         this.jq = $(selector); 
-        this.options = $.extend({}, $.fn.unitypi.defaults, options);
+        this.options = $.extend({}, $.fn.unityping.defaults, options);
         this.beginCode = {
             han: 0xAC00,
             cho: 0x1100,
@@ -42,8 +42,8 @@
         this.run();
     };
 
-    Unitypi.prototype = {
-        construction: Unitypi,
+    Unityping.prototype = {
+        construction: Unityping,
         init: function() {
             var that = this;
             for(var i=0, len=that.options.string.length; i<len; i++) {
@@ -180,14 +180,14 @@
         },
     };
 
-    $.fn.unitypi = function(options) {
+    $.fn.unityping = function(options) {
         return this.each(function() {
             var jq = $(this);
-            jq.data('unitypi', new Unitypi(this, options));
+            jq.data('unityping', new Unityping(this, options));
         });
     };
 
-    $.fn.unitypi.defaults = {
+    $.fn.unityping.defaults = {
         string: ['반가워요, 프로그래머!', '원하시는 문장을 쓰시면,', '이렇게 타이핑이 됩니다!'],
         typingSpeed: 200,
         startDelay: 0,
