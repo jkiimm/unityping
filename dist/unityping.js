@@ -103,8 +103,11 @@
                     return;
                 }
 
+                console.log(sq[that.pos.str][0]);
                 that.written = !that.pos.ch ? that.written+sq[that.pos.str][that.pos.ch] : that.written.substr(0, that.written.length-1)+sq[that.pos.str][that.pos.ch];
-                that.jq.text(that.written);
+                that.jq.html(that.written);
+                //that.jq.append('<br>');
+
                 // eachTyping callback
                 that.options.eachTyping(that.written, that.pos);
 
@@ -144,16 +147,35 @@
             }, that.options.backSpeed);
         },
         run: function() {
-            this.addCursor(this.options.cursor); 
+            this.addCursor('box'); 
+            //this.addCursor('text', this.options.cursor); 
             this.init(); 
         },
-        addCursor: function(symbol) {
-            this.jq.after('<span id="blinker">'+symbol+'</span>');
-            $('#blinker').css({
-                'font-weight': 100,
-                'font-size': parseInt(this.jq.css('font-size'))*1.14+'px'
-            });
-        
+        addCursor: function(render, symbol) {
+            if(render === 'box') {
+                this.jq.after('<span id="blinker"></span>');
+
+                var fontSize = parseInt(this.jq.css('font-size')),
+                height = fontSize*0.92+'px',
+                top = fontSize*0.13+'px';
+                
+                $('#blinker').css({
+                    'background-color': '#ffffff',
+                    'position': 'relative',
+                    'display': 'inline-block',
+                    'width': '1px',
+                    'height': height,
+                    'top': top,
+                    'left': '-1px',
+                });
+            }
+            if(render === 'text') {
+                this.jq.after('<span id="blinker">'+symbol+'</span>');
+                $('#blinker').css({
+                    'font-weight': 100,
+                    'font-size': parseInt(this.jq.css('font-size'))*1.14+'px'
+                });
+            }
         },
         sequencer: function(str) {
             var that = this;
@@ -198,7 +220,12 @@
             var charDivider = function(uni) {
                 // Not Hangul
                 if(!/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/.test(uni)) {
-                    return [uni];
+                    switch(uni) {
+                        case '\n':
+                            return ['<br>'];
+                        default:
+                            return [uni];
+                    }
                 } 
 
                 // Hangul

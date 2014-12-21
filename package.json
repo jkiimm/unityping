@@ -1,0 +1,33 @@
+{
+  "name": "unityping",
+  "version": "0.0.3",
+  "description": "jQuery - Typing effect plugin(+Hangul)",
+  "main": "app.js",
+  "dependencies": {
+    "express": "~4.10.2"
+  },
+  "devDependencies": {
+    "grunt-contrib-sass": "~0.8.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "~0.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ligeek/unityping.git"
+  },
+  "keywords": [
+    "typing",
+    "plugin",
+    "jquery",
+    "hangul"
+  ],
+  "author": "ligeek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ligeek/unityping/issues"
+  }
+}

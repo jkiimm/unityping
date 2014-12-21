@@ -1,11 +1,11 @@
 Unityping
 =========
 jQuery - Hangul Typing effect plugin(한글 타이핑 플러그인!).  
-![typing GIF](http://s1.postimg.org/f48r55qzz/typing.gif)
+![typing GIF](http://goo.gl/ipduuO)
 
 Introduction(소개)
 ----
->한글 문장을 입력하면 웹상에서 초성, 중성, 종성 입력에 따른 **한글을 타이핑 치는듯한 효과**를 낼 수 있습니다. 기존의 타이핑 효과 플러그인을 한글로 입력했을시에는 초성, 중성, 종성 각각의 입력이 보이지 않고, 문자 하나씩 나타나 아쉬운 마음에 제작.  
+>한글 문장을 입력하면 웹상에서 초성, 중성, 종성 입력에 따른 **한글을 타이핑 치는듯한 효과**를 낼 수 있습니다. 기존의 타이핑 효과 플러그인을 한글로 입력했을시에는 초성, 중성, 종성 각각의 입력이 보이지 않고, 문자 하나씩 나타나 아쉬운 마음에 제작**(아 물론, 영어는 기본 지원)**.
 
 
 Install(설치)
@@ -20,7 +20,7 @@ $ git clone https://github.com/ligeek/unityping.git
 
 ### bower를 이용한 방법
 ~~~ sh 
-$ bower install --save https://github.com/ligeek/unityping.git
+$ bower install --save ligeek/unityping
 ~~~
 
 Usage(사용법)
@@ -36,7 +36,7 @@ Usage(사용법)
       	$(function(){
             $('.foo').unityping({
                 string: ['두유 노우 김연아?', '두유 노우 강남스타일?', '두유 노우 지성팍?'],
-                typingSpeed: 300, // 300타/분
+                typingSpeed: 300, // 300타/분 (CPM; Characters per Minute)
                 startDelay: 1000, // ms
                 backSpeed: 100, // ms
                 backDelay: 1000 // ms
@@ -74,5 +74,6 @@ Usage(사용법)
 
 Note(비고)
 ----
-현재는 아주 기본적인 기능만 담고 있으므로, 정말 간단한 곳에만 활용하시는 것이 정신건강에 이롭습니다. 사용해보시고 건의하실 사항*(이 기능이 없는게 말이되??)*이나 버그로 인한 스트레스를 받고 있다면 언제든지 [issue](https://github.com/ligeek/unityping/issues)에 올려주세요!
+현재는 아주 기본적인 기능만 담고 있으므로, 간단한 곳에만 활용하시는 것이 정신건강에 이롭습니다. 사용해보시고 건의하실 사항*(이 기능이 없는게 말이되??)*이나 버그로 인한 고통을 받고 있다면 언제든지 [issue](https://github.com/ligeek/unityping/issues)에 올려주세요!
+
 
