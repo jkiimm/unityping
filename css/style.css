@@ -9,11 +9,11 @@ body {
     text-align: center;
 }
 
-.foo, #blinker {
+.typer, #blinker {
     color: #ffffff;
 }
 
-.foo {
+.typer {
     font-weight: 700;
     font-size: 4em;
 }

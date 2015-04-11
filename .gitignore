@@ -1,7 +1,5 @@
-*.sw[o|p]
-bower.json
-foo/
-jasmine/
-node_modules/
-bower_components/
-test.html
+/node_modules/
+/bower_components/
+/test/
+dist
+*.sw[op]

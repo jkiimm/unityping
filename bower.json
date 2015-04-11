@@ -1,0 +1,11 @@
+{
+  "name": "unityping",
+  "version": "0.0.2",
+  "dependencies": {
+    "jquery": "latest"
+  },
+  "devDependencies": {
+    "qunit": "~1.12.0",
+    "jquery": "latest"
+  }
+}
