@@ -3,3 +3,5 @@
 /test/
 *.sw[op]
 *.orig
+/.tmp/
+/.sass-cache/

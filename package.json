@@ -1,7 +1,7 @@
 {
   "name": "unityping",
-  "version": "0.0.3",
-  "description": "unityping",
+  "version": "0.1",
+  "description": "jQuery - Hangul-typing effect plugin",
   "keywords": [
     "jquery-plugin",
     "typing",
