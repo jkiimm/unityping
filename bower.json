@@ -7,6 +7,10 @@
     "typing",
     "hangul"
   ],
+  "ignore": [
+    "./css/",
+    "./src/"
+  ],
   "authors": [
     { "name": "Jinyoung Kim", "email": "ligeek49@gmail.com" }
   ],
