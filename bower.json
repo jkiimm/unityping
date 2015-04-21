@@ -1,0 +1,30 @@
+{
+  "name": "unityping",
+  "version": "0.1.0",
+  "description": "jQuery - Hangul-typing effect plugin",
+  "keywords": [
+    "jquery-plugin",
+    "typing",
+    "hangul"
+  ],
+  "ignore": [
+    "./css/",
+    "./src/"
+  ],
+  "authors": [
+    { "name": "Jinyoung Kim", "email": "ligeek49@gmail.com" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ligeek/unityping.git"
+  },
+  "main": "./dist/jquery.unityping.js",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "latest"
+  },
+  "devDependencies": {
+    "qunit": "~1.12.0",
+    "jquery": "latest"
+  }
+}

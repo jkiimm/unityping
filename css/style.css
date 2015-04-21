@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-size: 100%;
+    background: #222222;
+}
+
+.typing-cont {
+    margin-top: 300px;
+    text-align: center;
+}
+
+.typer, #blinker {
+    color: #ffffff;
+}
+
+.typer {
+    font-weight: 700;
+    font-size: 4em;
+}
+
+
+#blinker{
+    -webkit-animation: blink 1.2s step-end infinite;
+    -moz-animation: blink 1.2s step-end infinite;
+    animation: blink 1.2s step-end infinite;
+}
+@keyframes blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}
+@-webkit-keyframes blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}
+@-moz-keyframes blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}

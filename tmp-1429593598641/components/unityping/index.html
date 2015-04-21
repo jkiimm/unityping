@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>Unityping | Demo</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="typing-cont">
+            <span class="typer"></span>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="dist/jquery.unityping.min.js"></script>
+        <script>
+            $(function() {
+                $('.typer').unityping({
+                    string: [
+                        '안녕하세요, 한글 타이핑 플러그인입니다.',
+                        '그동안 영어만 있어서 섭섭하셨나요?',
+                        '이젠 한글은 이걸로!'
+                    ],
+                    typingSpeed: 400
+                });
+            });
+        </script>
+    </body>
+</html>
