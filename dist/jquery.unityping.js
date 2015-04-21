@@ -1,4 +1,4 @@
-/*! unityping - v0.0.3 - 2015-04-11
+/*! unityping - v0.1.0 - 2015-04-21
 * Copyright (c) 2015 Jinyoung Kim; Licensed MIT */
 (function($) {
   'use strict';
