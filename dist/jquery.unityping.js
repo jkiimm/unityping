@@ -83,7 +83,6 @@
           return;
         }
 
-        console.log(sq[that.pos.str][0]);
         that.written = !that.pos.ch ? that.written+sq[that.pos.str][that.pos.ch] : that.written.substr(0, that.written.length-1)+sq[that.pos.str][that.pos.ch];
         that.jq.html(that.written);
         //that.jq.append('<br>');
